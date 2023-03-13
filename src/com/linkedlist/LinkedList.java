@@ -11,6 +11,18 @@ public class LinkedList {
         newNode.next = head;
         head = newNode;
     }
+    public void append(Object data) {  // To add a node at last of the linked list.
+        Node newNode = new Node(data);
+        if(head==null){
+            head = newNode;
+            return;
+        }
+        Node tempNode = head;
+        while(tempNode.next != null){
+            tempNode = tempNode.next;
+        }
+        tempNode.next=newNode;
+    }
     public void printNode() {
         if (head == null) {
             System.out.println("Linked list is empty...");
@@ -33,5 +45,10 @@ public class LinkedList {
         list.addFirst("30");
         list.addFirst("56");
         list.printNode();
+        LinkedList listappend = new LinkedList();
+        listappend.append("56");
+        listappend.append("30");
+        listappend.append("70");
+        listappend.printNode();
     }
 }
