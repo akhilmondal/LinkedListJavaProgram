@@ -1,6 +1,6 @@
 package com.linkedlist;
 
-public class LinkedList {
+public class LinkedList<T> {
     Node head;
     public void addFirst(Object data){   // To add a node before head and make that node as head.
         Node newNode = new Node(data);
@@ -23,6 +23,22 @@ public class LinkedList {
         }
         tempNode.next=newNode;
     }
+    public void insertAfter(String previusNode, Object data) { // Passing the value which i want to search(previusNode) and the new data which i want to insert.
+        Node newNode = new Node(data);
+        if(head==null){
+            head = newNode;
+            return;
+        }
+        Node tempNode = head;
+        Node nextNode = tempNode.next;
+        while(tempNode.data != previusNode){
+            tempNode = tempNode.next;
+            nextNode = nextNode.next;  //Traversing simultaneously to reach at the location where need to insert a value.
+        }
+        tempNode.next=newNode; //Inserting the newNode after the searched value.
+        newNode.next = nextNode; // Assigning the nextNode to the newNode.next.
+    }
+
     public void printNode() {
         if (head == null) {
             System.out.println("Linked list is empty...");
@@ -45,10 +61,12 @@ public class LinkedList {
         list.addFirst("30");
         list.addFirst("56");
         list.printNode();
-        LinkedList listappend = new LinkedList();
+        LinkedList<Integer> listappend = new LinkedList();
         listappend.append("56");
         listappend.append("30");
         listappend.append("70");
+        listappend.printNode();
+        listappend.insertAfter("30","40");
         listappend.printNode();
     }
 }
