@@ -38,6 +38,13 @@ public class LinkedList<T> {
         tempNode.next=newNode; //Inserting the newNode after the searched value.
         newNode.next = nextNode; // Assigning the nextNode to the newNode.next.
     }
+    public void pop() {  //Deleting the first node from the linked list.
+        if(head==null){
+            System.out.println("Linked list is empty...");
+            return;
+        }
+        head=head.next; //Pointing head to the head.next so the first node will be deleted.
+    }
 
     public void printNode() {
         if (head == null) {
@@ -67,6 +74,9 @@ public class LinkedList<T> {
         listappend.append("70");
         listappend.printNode();
         listappend.insertAfter("30","40");
+        listappend.printNode();
+        listappend.pop();
+        System.out.println("After deleting the first node : ");
         listappend.printNode();
     }
 }
