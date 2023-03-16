@@ -45,6 +45,23 @@ public class LinkedList<T> {
         }
         head=head.next; //Pointing head to the head.next so the first node will be deleted.
     }
+    public void popLast(){  //Deleting the last node of the linked list.
+        if(head==null){
+            System.out.println("Linked list is empty...");
+            return;
+        }
+        if (head.next == null) {
+            head=null;
+            return;
+        }
+        Node prevNode = head;
+        Node tempNode = head.next;
+        while(tempNode.next != null){
+            prevNode = prevNode.next;
+            tempNode = tempNode.next;
+        }
+        prevNode.next = null;
+    }
 
     public void printNode() {
         if (head == null) {
@@ -74,9 +91,13 @@ public class LinkedList<T> {
         listappend.append("70");
         listappend.printNode();
         listappend.insertAfter("30","40");
+        System.out.println("After inserting a value to the node : ");
         listappend.printNode();
         listappend.pop();
         System.out.println("After deleting the first node : ");
+        listappend.printNode();
+        listappend.popLast();
+        System.out.println("After deleting the last  node : ");
         listappend.printNode();
     }
 }
